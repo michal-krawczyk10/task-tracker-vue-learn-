@@ -1,6 +1,11 @@
 <template>
   <div class="container">
-    <Header title="Task Tracker" />
+    <Header
+      v-on:toggle-add-task="toggleAddTask"
+      title="Task Tracker"
+      v-bind:showAddTask="showAddTask"
+    />
+    <div v-show="showAddTask"><AddTask v-on:add-task="addTask" /></div>
     <Tasks
       v-on:toggle-reminder="toggleReminder"
       v-on:delete-task="deleteTask"
@@ -12,19 +17,28 @@
 <script>
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
+import AddTask from "./components/AddTask";
 
 export default {
   name: "App",
   components: {
     Header,
     Tasks,
+    AddTask,
   },
   data() {
     return {
       tasks: [],
+      showAddTask: false,
     };
   },
   methods: {
+    toggleAddTask() {
+      this.showAddTask = !this.showAddTask;
+    },
+    addTask(task) {
+      this.tasks = [...this.tasks, task];
+    },
     deleteTask(id) {
       if (confirm("Are you sure?")) {
         this.tasks = this.tasks.filter((task) => task.id !== id);

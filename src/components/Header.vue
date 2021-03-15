@@ -1,9 +1,11 @@
 <template>
   <header>
     <h1>{{ title }}</h1>
-    <Button text="Add Task" color="green" />
-    <Button text="Edit Task" color="blue" />
-    <Button text="Delate Task" color="red" />
+    <Button
+      v-on:btn-click="$emit('toggle-add-task')"
+      v-bind:text="showAddTask ? 'Close' : 'Add Task'"
+      :color="showAddTask ? 'red' : 'green'"
+    />
   </header>
 </template>
 
@@ -12,7 +14,7 @@ import Button from "./Button";
 
 export default {
   name: "Header",
-  props: { title: String },
+  props: { title: String, showAddTask: Boolean },
   components: { Button },
 };
 </script>
