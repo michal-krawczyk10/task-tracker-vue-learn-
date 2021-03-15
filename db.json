@@ -17,6 +17,18 @@
       "day": "ss",
       "reminder": true,
       "id": "QFx_c0r"
+    },
+    {
+      "text": "dd",
+      "day": "dd",
+      "reminder": false,
+      "id": "fEbjEWJ"
+    },
+    {
+      "text": "test 3",
+      "day": "test 3",
+      "reminder": false,
+      "id": "9cEAbi9"
     }
   ]
 }
